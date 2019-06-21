@@ -1,12 +1,24 @@
+/**
+ * @name index.js
+ * @description src/index.js root react file
+ * song information display practice app that
+ * implements redux with react.
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+//
+import App from './components/App';
+import reducers from './reducers';
+//
+ReactDOM.render(
+  // Difference of using redux vs not
+  // pass provider a store prop with create
+  // store function call with reducers obj
+  // passed in.
+  <Provider store={createStore(reducers)}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
